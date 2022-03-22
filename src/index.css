@@ -45,7 +45,7 @@ code {
 
 .pulse {
   animation-name: pulse;
-  animation-duration: 2s;
+  animation-duration: 1.7s;
   animation-iteration-count: infinite;
 }
 
@@ -67,7 +67,7 @@ code {
 
   background-color: rgba(0, 113, 243, 1);
   animation-name: sonar;
-  animation-duration: 2s;
+  animation-duration: 1.7s;
   animation-iteration-count: infinite;
 }
 
