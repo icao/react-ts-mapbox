@@ -1,9 +1,9 @@
-import { MapView } from "../components";
+import { MapView } from '../components'
 
 export const Home = () => {
   return (
     <div>
       <MapView />
     </div>
-  );
-};
+  )
+}

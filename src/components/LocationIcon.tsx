@@ -1,15 +1,11 @@
 interface Prop {
-  color: string;
+  color: string
 }
 
 export const LocationIcon = ({ color }: Prop) => {
   return (
-    <div style={{ width: "100%", height: "auto", display: "flex" }}>
-      <svg
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-      >
+    <div style={{ width: '100%', height: 'auto', display: 'flex' }}>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <g
           fill={color}
           stroke="none"
@@ -37,5 +33,5 @@ export const LocationIcon = ({ color }: Prop) => {
         </g>
       </svg>
     </div>
-  );
-};
+  )
+}

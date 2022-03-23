@@ -1,4 +1,4 @@
-import { LocationIcon } from "./LocationIcon";
+import { LocationIcon } from './LocationIcon'
 
 export const Loading = () => {
   return (
@@ -11,5 +11,5 @@ export const Loading = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

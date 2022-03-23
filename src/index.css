@@ -3,33 +3,33 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "UberMove";
-  src: url("./fonts/UberMove-Regular.otf");
-  src: url("./fonts/UberMove-Regular.woff") format("woff");
+  font-family: 'UberMove';
+  src: url('./fonts/UberMove-Regular.otf');
+  src: url('./fonts/UberMove-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "UberMove";
-  src: url("./fonts/UberMove-Medium.otf");
-  src: url("./fonts/UberMove-Medium.woff") format("woff");
+  font-family: 'UberMove';
+  src: url('./fonts/UberMove-Medium.otf');
+  src: url('./fonts/UberMove-Medium.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "UberMoveText";
-  src: url("./fonts/UberMoveText-Regular.otf");
-  src: url("./fonts/UberMoveText-Regular.woff") format("woff");
+  font-family: 'UberMoveText';
+  src: url('./fonts/UberMoveText-Regular.otf');
+  src: url('./fonts/UberMoveText-Regular.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "UberMoveText";
-  src: url("./fonts/UberMoveText-Medium.otf");
-  src: url("./fonts/UberMoveText-Medium.woff") format("woff");
+  font-family: 'UberMoveText';
+  src: url('./fonts/UberMoveText-Medium.otf');
+  src: url('./fonts/UberMoveText-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -39,8 +39,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .pulse {
@@ -55,7 +54,7 @@ code {
 }
 
 .spinner::after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 80px;
   height: 80px;

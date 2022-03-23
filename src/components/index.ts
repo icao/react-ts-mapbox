@@ -1,7 +1,5 @@
-export { LocationIcon } from "./LocationIcon";
+export { LocationIcon } from './LocationIcon'
 
-export { Loading } from "./Loading";
+export { Loading } from './Loading'
 
-export { MapView } from "./MapView";
-
-
+export { MapView } from './MapView'

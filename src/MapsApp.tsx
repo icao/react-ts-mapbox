@@ -1,5 +1,5 @@
-import { MapProvider, PlacesProvider } from "./context";
-import { Home } from "./pages";
+import { MapProvider, PlacesProvider } from './context'
+import { Home } from './pages'
 
 const MapsApp = () => {
   return (
@@ -8,7 +8,7 @@ const MapsApp = () => {
         <Home />
       </MapProvider>
     </PlacesProvider>
-  );
-};
+  )
+}
 
-export default MapsApp;
+export default MapsApp
