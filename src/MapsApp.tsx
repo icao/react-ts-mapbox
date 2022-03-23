@@ -1,10 +1,12 @@
-import { PlacesProvider } from "./context";
+import { MapProvider, PlacesProvider } from "./context";
 import { Home } from "./pages";
 
 const MapsApp = () => {
   return (
     <PlacesProvider>
-      <Home />
+      <MapProvider>
+        <Home />
+      </MapProvider>
     </PlacesProvider>
   );
 };
