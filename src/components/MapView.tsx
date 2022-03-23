@@ -1,11 +1,13 @@
 import { Map } from 'mapbox-gl'
 import { useContext, useLayoutEffect, useRef } from 'react'
 import { MapContext, PlacesContext } from '../context'
+import { Button } from './Button'
 import { Loading } from './Loading'
+import { LocationCenterIcon } from './LocationCenterIcon'
 
 export const MapView = () => {
   const { isLoading, userLocation } = useContext(PlacesContext)
-  const { setMap } = useContext(MapContext)
+  const { map, isMapReady, setMap } = useContext(MapContext)
   const mapContainer = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
@@ -13,7 +15,7 @@ export const MapView = () => {
       const map = new Map({
         container: mapContainer.current!, // container ID
         style: 'mapbox://styles/mapbox/dark-v10', // style URL
-        // style: "mapbox://styles/mapbox/light-v10", // style URL
+        // style: 'mapbox://styles/mapbox/light-v10', // style URL
         center: userLocation, // starting position [lng, lat]
         zoom: 14, // starting zoom
       })
@@ -22,10 +24,29 @@ export const MapView = () => {
     }
   }, [isLoading])
 
+  const centerMap = () => {
+    if (!isMapReady) throw Error('El mapa no está listo')
+    if (!userLocation) throw Error('No hay ubicación del usuario')
+
+    map?.flyTo({
+      zoom: 14,
+      center: userLocation,
+    })
+  }
+
   return (
     <div ref={mapContainer} className="bg-zinc-800 w-full h-screen">
       {isLoading && <Loading />}
       {/* <p>{userLocation?.join(',')}</p> */}
+      <div className="absolute z-10 top-10 right-10">
+        <Button onClick={centerMap} size="mini">
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-6 h-6">
+              <LocationCenterIcon color="white" />
+            </div>
+          </div>
+        </Button>
+      </div>
     </div>
   )
 }

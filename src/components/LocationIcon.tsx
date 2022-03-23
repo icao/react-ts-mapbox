@@ -5,7 +5,13 @@ interface Prop {
 export const LocationIcon = ({ color }: Prop) => {
   return (
     <div style={{ width: '100%', height: 'auto', display: 'flex' }}>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        role="img"
+        aria-hidden="true"
+      >
         <g
           fill={color}
           stroke="none"

@@ -12,9 +12,7 @@ function App() {
         </div> */}
         <br />
         <br />
-        {/* <button className="bg-next-blue m-0 px-14 py-1 leading-9 rounded-md shadow-blue-next text-white capitalize text-center font-uberText text-base">
-          enviar petición
-        </button> */}
+       
       </div>
     </div>
   )

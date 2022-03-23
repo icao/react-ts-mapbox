@@ -10,6 +10,7 @@
     "format:fix": " npx prettier --write \"**/*.{js,jsx,json,ts,tsx,scss,css}\""
   },
   "dependencies": {
+    "clsx": "^1.1.1",
     "mapbox-gl": "^2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
