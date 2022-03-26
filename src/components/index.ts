@@ -1,3 +1,4 @@
+export { SearchBar } from './SearchBar'
 export { Button } from './Button'
 
 export { LocationCenterIcon } from './LocationCenterIcon'

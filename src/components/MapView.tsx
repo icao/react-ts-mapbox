@@ -14,8 +14,8 @@ export const MapView = () => {
     if (!isLoading) {
       const map = new Map({
         container: mapContainer.current!, // container ID
-        style: 'mapbox://styles/mapbox/dark-v10', // style URL
-        // style: 'mapbox://styles/mapbox/light-v10', // style URL
+        // style: 'mapbox://styles/mapbox/dark-v10', // style URL
+        style: 'mapbox://styles/mapbox/light-v10', // style URL
         center: userLocation, // starting position [lng, lat]
         zoom: 14, // starting zoom
       })
@@ -35,7 +35,7 @@ export const MapView = () => {
   }
 
   return (
-    <div ref={mapContainer} className="bg-zinc-800 w-full h-screen">
+    <div ref={mapContainer} className="bg-zinc-50 w-full h-screen">
       {isLoading && <Loading />}
       {/* <p>{userLocation?.join(',')}</p> */}
       <div className="absolute z-10 top-10 right-10">
