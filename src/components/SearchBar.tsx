@@ -28,7 +28,7 @@ export const SearchBar = ({ placeholder }: Props) => {
     <div className="z-10 absolute top-10 left-10">
       <input
         type="text"
-        className="bg-white outline-none rounded-md px-3 py-2 font-uber tracking-wide text-zinc-700 font-light w-80 border  hover:border-next-blue focus:border-next-blue shadow-black-medium hover:shadow-blue-next focus:shadow-blue-next"
+        className="bg-white outline-none rounded-md px-3 py-2 font-uber tracking-wide text-zinc-700 font-light w-96 border  hover:border-next-blue focus:border-next-blue shadow-black-medium hover:shadow-blue-next focus:shadow-blue-next"
         placeholder={placeholder}
         onChange={onQueryChange}
       />

@@ -8,13 +8,13 @@ interface IProps {
 export const SearchResultItem = ({ place }: IProps) => {
   return (
     <li className="bg-zinc-100 p-3">
-      <h3 className="font-uber tracking-wide font-medium">{place.text_es}</h3>
+      <h3 className="font-uber tracking-wide font-medium ">{place.text_es}</h3>
       <p className="font-uber font-thin text-zinc-400 tracking-wide text-sm">
         {place.place_name_es}
       </p>
       <div className="float-right mt-2">
         <Button size="thin">
-          <p className="font-uber font-thin">dirección</p>
+          <p className="font-uber font-thin text-sm">dirección</p>
         </Button>
       </div>
     </li>
