@@ -1,8 +1,10 @@
+export { SearchResultItem } from './SearchResultItem'
+export { LoadingPlaces } from './LoadingPlaces'
+export { SearchResults } from './SearchResults'
 export { SearchBar } from './SearchBar'
 export { Button } from './Button'
-
 export { LocationCenterIcon } from './LocationCenterIcon'
 export { LocationIcon } from './LocationIcon'
-
 export { Loading } from './Loading'
 export { MapView } from './MapView'
+
