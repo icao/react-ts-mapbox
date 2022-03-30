@@ -4,7 +4,7 @@ interface Props {
   children: JSX.Element | JSX.Element[]
   onClick?: () => void
   type?: 'button' | 'submit'
-  size?: 'mini'| 'thin' | 'small' | 'medium' | 'large'
+  size?: 'mini' | 'thin' | 'small' | 'medium' | 'large'
 }
 
 export const Button = ({
@@ -18,7 +18,7 @@ export const Button = ({
       onClick={onClick}
       type={type}
       className={clsx(
-        'm-0 bg-next-blue rounded-md shadow-blue-next text-white capitalize text-center font-uberText text-base',
+        'm-0 bg-next-blue hover:bg-next-blue-secondary rounded-md shadow-blue-next text-white capitalize text-center font-uberText text-base',
         {
           'px-2 py-2': size === 'mini',
           'px-4 py-2': size === 'thin',

@@ -13,6 +13,7 @@ module.exports = {
       },
       colors: {
         'next-blue': '#0070f3',
+        'next-blue-secondary': '#1b84ff',
       },
     },
   },
