@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { MapContext, PlacesContext } from '../context'
 import { Feature } from '../interfaces/places'
 import { Button } from './Button'
 
@@ -6,6 +8,18 @@ interface IProps {
 }
 
 export const SearchResultItem = ({ place }: IProps) => {
+  const { getRoutesBetweenPoints } = useContext(MapContext)
+
+  const { userLocation } = useContext(PlacesContext)
+
+  const getRoute = (place: Feature) => {
+    if (!userLocation) return
+
+    const [lng, lat] = place.center
+
+    getRoutesBetweenPoints(userLocation, [lng, lat])
+  }
+
   return (
     <div>
       <h3 className="font-uber tracking-wide font-medium ">{place.text_es}</h3>
@@ -13,7 +27,7 @@ export const SearchResultItem = ({ place }: IProps) => {
         {place.place_name_es}
       </p>
       <div className="float-right mt-2">
-        <Button size="thin">
+        <Button size="thin" onClick={() => getRoute(place)}>
           <p className="font-uber font-thin text-sm">dirección</p>
         </Button>
       </div>

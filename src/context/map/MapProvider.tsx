@@ -1,6 +1,9 @@
-import { LngLatLike, Map, Marker, Popup } from 'mapbox-gl'
+import { AnySourceData, LngLatBounds, Map, Marker, Popup } from 'mapbox-gl'
 import { useContext, useEffect, useReducer } from 'react'
+import { Direction } from 'readline'
 import { PlacesContext } from '../'
+import { directionsApi } from '../../apis'
+import { IDirectionsResponse } from '../../interfaces/directions'
 
 import { MapContext } from './MapContext'
 import { mapReducer } from './MapReducer'
@@ -52,7 +55,13 @@ export const MapProvider = ({ children }: Props) => {
       newMarkers.push(marker)
     })
 
-    // TODO: Limpiar polilines
+    // Limpiar polilines para no visualizar nada en la sig busqueda
+    if (state.map?.getLayer('RouteString')) {
+      state.map.removeLayer('RouteString')
+      state.map.removeSource('RouteString')
+    }
+
+    // Mandamos los nuevos markers
     dispatch({ type: 'setMarkers', payload: newMarkers })
   }, [places])
 
@@ -70,12 +79,88 @@ export const MapProvider = ({ children }: Props) => {
     })
   }
 
+  const getRoutesBetweenPoints = async (
+    start: [number, number],
+    end: [number, number]
+  ) => {
+    const response = await directionsApi.get<IDirectionsResponse>(
+      `${start.join(',')}; ${end.join(',')}`
+    )
+    console.log(response)
+
+    // Obteniendo tiempo y distanci de la ruta
+    // TODO: almacenar en estado y mostrarlo en algun lado del mapa
+    const { distance, duration, geometry } = response.data.routes[0]
+    const { coordinates } = geometry
+
+    let kms = distance / 1000
+    kms = Math.round(kms * 100)
+    kms = kms / 100
+
+    const minutes = Math.floor(duration / 60)
+
+    console.log('Distancia: ' + kms + ' - ' + 'Tiempo: ' + minutes)
+
+    // BOUNDS: Creamos un delimitador de zona en el mapa para centrar la ruta seleccionada
+    const bounds = new LngLatBounds(start, start)
+
+    for (const coordinate of coordinates) {
+      const [lng, lat] = coordinate
+      bounds.extend([lng, lat])
+    }
+
+    state.map?.fitBounds(bounds, {
+      padding: 200,
+    })
+
+    // POLYLINES: Creamos un trazado de nuestra ruta con una polilinea
+    const sourceData: AnySourceData = {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: {},
+            geometry: {
+              type: 'LineString',
+              coordinates: coordinates,
+            },
+          },
+        ],
+      },
+    }
+
+    // Si existe una poliniea previa, remuevela
+    if (state.map?.getLayer('RouteString')) {
+      state.map.removeLayer('RouteString')
+      state.map.removeSource('RouteString')
+    }
+
+    // Agrega la polilinea
+    state.map?.addSource('RouteString', sourceData)
+    state.map?.addLayer({
+      id: 'RouteString',
+      type: 'line',
+      source: 'RouteString',
+      layout: {
+        'line-cap': 'round',
+        'line-join': 'round',
+      },
+      paint: {
+        'line-color': 'black',
+        'line-width': 3,
+      },
+    })
+  }
+
   return (
     <MapContext.Provider
       value={{
         ...state,
         //methods
         setMap,
+        getRoutesBetweenPoints,
       }}
     >
       {children}

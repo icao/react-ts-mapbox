@@ -5,7 +5,7 @@ const directionsApi = axios.create({
   params: {
     alternatives: false,
     geometries: 'geojson',
-    overview: 'simplified',
+    overview: 'full',
     steps: false,
     access_token:
       'pk.eyJ1IjoiaWNhb3MiLCJhIjoiY2wxMW5pMGplMndmZDNjcW9sNWkydnYzYyJ9.O5VDvBOQ2bLM9gQZ0UAzlQ',
