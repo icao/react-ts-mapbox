@@ -116,6 +116,7 @@ export const MapProvider = ({ children }: Props) => {
     // POLYLINES: Creamos un trazado de nuestra ruta con una polilinea
     const sourceData: AnySourceData = {
       type: 'geojson',
+      lineMetrics: true, // para lopilinea con gradiente
       data: {
         type: 'FeatureCollection',
         features: [
@@ -150,6 +151,17 @@ export const MapProvider = ({ children }: Props) => {
       paint: {
         'line-color': 'black',
         'line-width': 3,
+        'line-gradient': [
+          'interpolate',
+          ['linear'],
+          ['line-progress'],
+          0,
+          'blue',
+          0.4,
+          'royalblue',
+          1,
+          'cyan',
+        ],
       },
     })
   }
