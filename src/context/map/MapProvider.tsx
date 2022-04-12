@@ -55,19 +55,19 @@ export const MapProvider = ({ children }: Props) => {
       newMarkers.push(marker)
     })
 
-    // Limpiar polilines para no visualizar nada en la sig busqueda
+    // 4.- Limpiar polilines para no visualizar nada en la sig busqueda
     if (state.map?.getLayer('RouteString')) {
       state.map.removeLayer('RouteString')
       state.map.removeSource('RouteString')
     }
 
-    // Mandamos los nuevos markers
+    // 5.- Mandamos los nuevos markers
     dispatch({ type: 'setMarkers', payload: newMarkers })
   }, [places])
 
   const setMap = (map: Map) => {
     const myLocation = new Popup().setHTML(`<p>Mi ubicación!</p>`)
-
+    // Mi ubicacion
     new Marker({ color: '#0070f3' })
       .setLngLat(map.getCenter())
       .setPopup(myLocation)
@@ -84,7 +84,10 @@ export const MapProvider = ({ children }: Props) => {
     end: [number, number]
   ) => {
     const response = await directionsApi.get<IDirectionsResponse>(
-      `${start.join(',')}; ${end.join(',')}`
+      // TODO: Manda rparametro cycling, walking, driving
+      // `cycling/${start.join(',')}; ${end.join(',')}`
+      `driving/${start.join(',')}; ${end.join(',')}`
+      // `walking/${start.join(',')}; ${end.join(',')}`
     )
     console.log(response)
 
@@ -110,7 +113,7 @@ export const MapProvider = ({ children }: Props) => {
     }
 
     state.map?.fitBounds(bounds, {
-      padding: 200,
+      padding: { top: 200, bottom: 200, left: 500, right: 200 },
     })
 
     // POLYLINES: Creamos un trazado de nuestra ruta con una polilinea
@@ -150,17 +153,17 @@ export const MapProvider = ({ children }: Props) => {
       },
       paint: {
         'line-color': 'black',
-        'line-width': 3,
+        'line-width': 3.5,
         'line-gradient': [
           'interpolate',
           ['linear'],
           ['line-progress'],
           0,
-          'blue',
-          0.4,
           'royalblue',
+          // 0.4,
+          // 'royalblue',
           1,
-          'cyan',
+          'purple',
         ],
       },
     })

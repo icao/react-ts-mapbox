@@ -16,7 +16,6 @@ export const SearchBar = ({ placeholder }: Props) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      // TODO: buscar una location
       console.log('debounce: ', event.target.value)
       searchPlaceByTerm(event.target.value).then((data) => {
         console.log(data)
