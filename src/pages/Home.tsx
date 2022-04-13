@@ -5,6 +5,7 @@ export const Home = () => {
     <div>
       <MapView />
       <SearchBar placeholder="Busca un lugar" />
+      
     </div>
   )
 }

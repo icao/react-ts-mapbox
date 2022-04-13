@@ -1,9 +1,8 @@
 import { AnySourceData, LngLatBounds, Map, Marker, Popup } from 'mapbox-gl'
 import { useContext, useEffect, useReducer } from 'react'
-import { Direction } from 'readline'
 import { PlacesContext } from '../'
 import { directionsApi } from '../../apis'
-import { IDirectionsResponse } from '../../interfaces/directions'
+import { IDirectionsResponse, Route } from '../../interfaces/directions'
 
 import { MapContext } from './MapContext'
 import { mapReducer } from './MapReducer'
@@ -15,16 +14,26 @@ import { mapReducer } from './MapReducer'
 interface Props {
   children: JSX.Element | JSX.Element[]
 }
+
+export interface RouteData {
+  duration: number
+  distance: number
+}
 export interface MapState {
   isMapReady: boolean
   map?: Map
   markers: Marker[]
+  routeData: RouteData
 }
 
 const INITIAL_STATE: MapState = {
   isMapReady: false,
   map: undefined,
   markers: [],
+  routeData: {
+    duration: 0,
+    distance: 0,
+  },
 }
 
 export const MapProvider = ({ children }: Props) => {
@@ -102,6 +111,7 @@ export const MapProvider = ({ children }: Props) => {
 
     const minutes = Math.floor(duration / 60)
 
+    dispatch({type: 'setRouteData', payload: [minutes, kms]})
     console.log('Distancia: ' + kms + ' - ' + 'Tiempo: ' + minutes)
 
     // BOUNDS: Creamos un delimitador de zona en el mapa para centrar la ruta seleccionada

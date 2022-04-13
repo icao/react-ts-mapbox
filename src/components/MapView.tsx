@@ -47,6 +47,11 @@ export const MapView = () => {
           </div>
         </Button>
       </div>
+      {/* // TODO Consumir datos del mapContext, verifiar como hacer bien la conversion del timpo */}
+      <div className="absolute z-10 top-20 right-1/2">
+        <h3>Distancia: 20km</h3>
+        <h3>Tiempo: 40minutos</h3>
+      </div>
     </div>
   )
 }
