@@ -16,8 +16,8 @@ interface Props {
 }
 
 export interface RouteData {
-  duration: number
-  distance: number
+  duration: number | undefined
+  distance: number | undefined
 }
 export interface MapState {
   isMapReady: boolean
@@ -31,8 +31,8 @@ const INITIAL_STATE: MapState = {
   map: undefined,
   markers: [],
   routeData: {
-    duration: 0,
-    distance: 0,
+    duration: undefined,
+    distance: undefined,
   },
 }
 
@@ -69,6 +69,14 @@ export const MapProvider = ({ children }: Props) => {
       state.map.removeLayer('RouteString')
       state.map.removeSource('RouteString')
     }
+    // 4.1 Limpiar parametros de distancia y duracion
+    dispatch({
+      type: 'setRouteData',
+      payload: {
+        duration: undefined,
+        distance: undefined,
+      },
+    })
 
     // 5.- Mandamos los nuevos markers
     dispatch({ type: 'setMarkers', payload: newMarkers })
@@ -111,8 +119,30 @@ export const MapProvider = ({ children }: Props) => {
 
     const minutes = Math.floor(duration / 60)
 
-    dispatch({type: 'setRouteData', payload: [minutes, kms]})
+    dispatch({
+      type: 'setRouteData',
+      payload: {
+        duration: minutes,
+        distance: kms,
+      },
+    })
+
     console.log('Distancia: ' + kms + ' - ' + 'Tiempo: ' + minutes)
+
+    // ////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
+    let minutos = Math.floor((duration / 60) % 60)
+    let horas = Math.floor((duration / (60 * 60)) % 24)
+    let dias = Math.floor(duration / (60 * 60 * 24))
+
+    console.log(`${dias} dias, ${horas} horas, ${minutos} minutos`)
+    console.log(duration)
+
+    // TODO: LISTO, solo verificar como almacenar, si en array en duration en el contexto 
+    // TODO: hacer las validaciones para lavisualizaicon en el componente
+
+    // ////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     // BOUNDS: Creamos un delimitador de zona en el mapa para centrar la ruta seleccionada
     const bounds = new LngLatBounds(start, start)

@@ -1,3 +1,4 @@
+export { RouteData } from './RouteData'
 export { SearchResultItem } from './SearchResultItem'
 export { LoadingPlaces } from './LoadingPlaces'
 export { SearchResults } from './SearchResults'

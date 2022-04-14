@@ -37,21 +37,19 @@ export const MapView = () => {
   return (
     <div ref={mapContainer} className="bg-zinc-50 w-full h-screen">
       {isLoading && <Loading />}
-      {/* <p>{userLocation?.join(',')}</p> */}
-      <div className="absolute z-10 top-10 right-10">
-        <Button onClick={centerMap} size="mini">
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-6 h-6">
-              <LocationCenterIcon color="white" />
-            </div>
+      {!isLoading && (
+        <>
+          <div className="absolute z-10 top-10 right-10">
+            <Button onClick={centerMap} size="mini">
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-6 h-6">
+                  <LocationCenterIcon color="white" />
+                </div>
+              </div>
+            </Button>
           </div>
-        </Button>
-      </div>
-      {/* // TODO Consumir datos del mapContext, verifiar como hacer bien la conversion del timpo */}
-      <div className="absolute z-10 top-20 right-1/2">
-        <h3>Distancia: 20km</h3>
-        <h3>Tiempo: 40minutos</h3>
-      </div>
+        </>
+      )}
     </div>
   )
 }
