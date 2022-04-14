@@ -1,3 +1,4 @@
+import { timeStamp } from 'console'
 import { useContext } from 'react'
 import { MapContext } from '../context'
 import { useGetTimeConvertion } from '../hooks/useGetTimeConvertion'
@@ -16,15 +17,15 @@ export const RouteData = () => {
     }
   }
 
-  const getTimeFormated = (days: timeValue, hours: timeValue, minutes: timeValue) => {
-    {
-      /* TODO: Agregar validaciones para queno aparezcan los 0 si no hay dias, horas, minuts */
-    }
-    return ` ${days} dia${getSuffix(days)} ${hours} hora${getSuffix(
-      hours
-    )} ${minutes} minuto${getSuffix(minutes)}`
+  const getTimeFormatted = (days: timeValue, hours: timeValue, minutes: timeValue) => {
+    const timeFormatted = ` ${days === 0 ? '' : `${days} dia${getSuffix(days)}`} ${
+      hours === 0 ? '' : `${hours} hora${getSuffix(hours)}`
+    } ${minutes} minuto${getSuffix(minutes)}`
+
+    return timeFormatted
   }
 
+  //  TODO: Dar estilos al recuadro de los datos
   return (
     <div className="bg-white h-auto p-3 rounded-md shadow-black-medium">
       <p>
@@ -33,17 +34,11 @@ export const RouteData = () => {
       </p>
       <p>
         <span className="font-uber tracking-wide font-medium ">Tiempo:</span>
-        {` ${routeData.duration} mints`}
-      </p>
-      <p>
-        <span className="font-uber tracking-wide font-medium ">Tiempo:</span>
         {days !== undefined &&
           hours !== undefined &&
           minutes !== undefined &&
-          getTimeFormated(days, hours, minutes)}
+          getTimeFormatted(days, hours, minutes)}
       </p>
-
-      
     </div>
   )
 }
