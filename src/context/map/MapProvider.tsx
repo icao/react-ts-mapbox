@@ -116,35 +116,15 @@ export const MapProvider = ({ children }: Props) => {
     let kms = distance / 1000
     kms = Math.round(kms * 100)
     kms = kms / 100
-
-    const minutes = Math.floor(duration / 60)
-
+    
+    // Actualiacion de los datos de la ruta: duracion y distancia
     dispatch({
       type: 'setRouteData',
       payload: {
-        duration: minutes,
+        duration: duration,
         distance: kms,
       },
     })
-
-    console.log('Distancia: ' + kms + ' - ' + 'Tiempo: ' + minutes)
-
-    // ////////////////////////////////////////////////////////////////////////////
-    // ////////////////////////////////////////////////////////////////////////////
-    let minutos = Math.floor((duration / 60) % 60)
-    let horas = Math.floor((duration / (60 * 60)) % 24)
-    let dias = Math.floor(duration / (60 * 60 * 24))
-
-    console.log(`${dias} dias, ${horas} horas, ${minutos} minutos`)
-    console.log(duration)
-
-    // TODO: LISTO, solo verificar como almacenar, si en array en duration en el contexto 
-    // TODO: hacer las validaciones para lavisualizaicon en el componente
-
-    // TODO: verificar si hacer custom hook que devuelva los valores ya convertido y pasarle solo el duration en segundos.    y consumirlo en el componente para visualizarlo
-
-    // ////////////////////////////////////////////////////////////////////////////
-    // ////////////////////////////////////////////////////////////////////////////
 
     // BOUNDS: Creamos un delimitador de zona en el mapa para centrar la ruta seleccionada
     const bounds = new LngLatBounds(start, start)
