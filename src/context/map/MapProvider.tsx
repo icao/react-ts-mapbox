@@ -141,6 +141,8 @@ export const MapProvider = ({ children }: Props) => {
     // TODO: LISTO, solo verificar como almacenar, si en array en duration en el contexto 
     // TODO: hacer las validaciones para lavisualizaicon en el componente
 
+    // TODO: verificar si hacer custom hook que devuelva los valores ya convertido y pasarle solo el duration en segundos.    y consumirlo en el componente para visualizarlo
+
     // ////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////
 
