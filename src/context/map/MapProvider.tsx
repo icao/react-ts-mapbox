@@ -51,8 +51,8 @@ export const MapProvider = ({ children }: Props) => {
       const [lng, lat] = place.center
       //creamos los popups
       const popup = new Popup().setHTML(`
-        <h6>${place.text_es}</h6>
-        <p>${place.place_name_es}</p>
+        <h3 style="font-weight: bold; font-family: UberMoveText; font-size: 14px">${place.text_es}</h3>
+        <p style=" font-family: UberMoveText;">${place.place_name_es}</p>
       `)
       //creamos los markers
       const marker = new Marker({ color: '#ff3366' })
@@ -83,7 +83,9 @@ export const MapProvider = ({ children }: Props) => {
   }, [places])
 
   const setMap = (map: Map) => {
-    const myLocation = new Popup().setHTML(`<p>Mi ubicación!</p>`)
+    const myLocation = new Popup().setHTML(
+      `<h3 style="font-weight: bold; font-family: UberMoveText; font-size: 14px">Mi ubicación</h3>`
+    )
     // Mi ubicacion
     new Marker({ color: '#0070f3' })
       .setLngLat(map.getCenter())
@@ -116,7 +118,7 @@ export const MapProvider = ({ children }: Props) => {
     let kms = distance / 1000
     kms = Math.round(kms * 100)
     kms = kms / 100
-    
+
     // Actualiacion de los datos de la ruta: duracion y distancia
     dispatch({
       type: 'setRouteData',

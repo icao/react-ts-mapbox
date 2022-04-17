@@ -1,3 +1,5 @@
+export { CarIcon } from './CarIcon'
+export { RouteIcon } from './RouteIcon'
 export { RouteData } from './RouteData'
 export { SearchResultItem } from './SearchResultItem'
 export { LoadingPlaces } from './LoadingPlaces'
@@ -8,4 +10,3 @@ export { LocationCenterIcon } from './LocationCenterIcon'
 export { LocationIcon } from './LocationIcon'
 export { Loading } from './Loading'
 export { MapView } from './MapView'
-
