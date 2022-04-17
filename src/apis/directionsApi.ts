@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const TOKEN_MAPBOX = import.meta.env.VITE_APP_MAPBOX_API_KEY
+
 const directionsApi = axios.create({
   baseURL: 'https://api.mapbox.com/directions/v5/mapbox/',
   params: {
@@ -9,8 +11,7 @@ const directionsApi = axios.create({
     language: 'es',
     overview: 'full',
     steps: false,
-    access_token:
-      'pk.eyJ1IjoiaWNhb3MiLCJhIjoiY2wxMW5pMGplMndmZDNjcW9sNWkydnYzYyJ9.O5VDvBOQ2bLM9gQZ0UAzlQ',
+    access_token: TOKEN_MAPBOX,
   },
 })
 
