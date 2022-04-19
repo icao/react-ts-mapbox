@@ -9,16 +9,16 @@ export const useGetTimeConvertion = (duration: Props) => {
 
   useEffect(() => {
     if (duration !== undefined) {
-      console.log('DURACION CUSTOM HOOK ' + duration)
+      // console.log('DURACION CUSTOM HOOK ' + duration)
       let minutes = Math.floor((duration / 60) % 60)
       let hours = Math.floor((duration / (60 * 60)) % 24)
       let days = Math.floor(duration / (60 * 60 * 24))
       setDays(days)
       setHours(hours)
       setMinutes(minutes)
-      console.log(
-        `********   ${days} dias, ${hours} horas, ${minutes} minutos   ********`
-      )
+      // console.log(
+      //   `********   ${days} dias, ${hours} horas, ${minutes} minutos   ********`
+      // )
     }
   }, [duration])
 

@@ -1,14 +1,18 @@
-import { Map } from 'mapbox-gl'
+import mapboxgl, { Map } from 'mapbox-gl'
 import { useContext, useLayoutEffect, useRef } from 'react'
 import { MapContext, PlacesContext } from '../context'
 import { Button } from './Button'
 import { Loading } from './Loading'
 import { LocationCenterIcon } from './LocationCenterIcon'
 
+const TOKEN_MAPBOX = import.meta.env.VITE_APP_MAPBOX_API_KEY
+
 export const MapView = () => {
   const { isLoading, userLocation } = useContext(PlacesContext)
   const { map, isMapReady, setMap } = useContext(MapContext)
   const mapContainer = useRef<HTMLDivElement>(null)
+
+  mapboxgl.accessToken = TOKEN_MAPBOX
 
   useLayoutEffect(() => {
     if (!isLoading) {

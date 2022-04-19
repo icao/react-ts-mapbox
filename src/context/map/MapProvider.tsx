@@ -108,10 +108,9 @@ export const MapProvider = ({ children }: Props) => {
       `driving/${start.join(',')}; ${end.join(',')}`
       // `walking/${start.join(',')}; ${end.join(',')}`
     )
-    console.log(response)
+    // console.log(response)
 
     // Obteniendo tiempo y distanci de la ruta
-    // TODO: almacenar en estado y mostrarlo en algun lado del mapa
     const { distance, duration, geometry } = response.data.routes[0]
     const { coordinates } = geometry
 

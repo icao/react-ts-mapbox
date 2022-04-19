@@ -16,9 +16,9 @@ export const SearchBar = ({ placeholder }: Props) => {
     }
 
     debounceRef.current = setTimeout(() => {
-      console.log('debounce: ', event.target.value)
+      // console.log('debounce: ', event.target.value)
       searchPlaceByTerm(event.target.value).then((data) => {
-        console.log(data)
+        // console.log(data)
       })
     }, 500)
   }
